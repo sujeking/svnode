@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<input type='text' class='content'>
+	<button onclick='send()'>send</button>
+	<script>
+			let host = location.origin.replace(/^http/,'ws') + '?userId=1000';
+			let ws = new WebSocket(host);
+			ws.onmessage = function (event){
+				alert(event.data);
+			}
+
+			function send(){
+				let e = document.querySelector('.content').value;
+				ws.send(e);
+			}
+	</script>
+</body>
+</html>
